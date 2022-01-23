@@ -7,3 +7,5 @@ func main() {
 	var a int = 0
 	fmt.Printf("%d/n", a)
 }
+init commit
+ddd
