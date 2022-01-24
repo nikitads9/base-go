@@ -5,6 +5,5 @@ import "fmt"
 func main() {
 	fmt.Println("Hello, World! Oh dear")
 	var a int = 0
-	fmt.Printf("%d/n", a)
+	fmt.Printf("%d /n", a)
 }
-lets commit some code
