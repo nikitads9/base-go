@@ -7,4 +7,5 @@ func main() {
 	var a int = 0
 	fmt.Printf("%d/n", a)
 }
-cat
+
+//some changes
