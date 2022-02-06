@@ -11,6 +11,7 @@ import (
 func main() {
 	Menu()
 }
+
 func ReadInput() string {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
@@ -38,6 +39,7 @@ outerLoop:
 		}
 	}
 }
+
 func StartGame() {
 	var user1Inp, user2Inp int
 
@@ -62,6 +64,7 @@ guessLoop:
 	fmt.Println("Bingo!")
 	Menu()
 }
+
 func ClearTerminal() {
 	switch runtime.GOOS {
 	case "linux":
