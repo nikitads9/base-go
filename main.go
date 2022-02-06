@@ -22,8 +22,7 @@ func Menu() {
 
 outerLoop:
 	for {
-		command := ReadInput()
-		switch command {
+		switch ReadInput() {
 		case "New game":
 			ClearTerminal()
 			fmt.Println("Let the game begin")
@@ -31,8 +30,10 @@ outerLoop:
 			break outerLoop
 		case "Exit":
 			break outerLoop
+		case "":
+			continue
 		default:
-			fmt.Println("Enter a proper command", command, "blabla")
+			fmt.Println("Enter a proper command")
 			continue
 		}
 	}
@@ -42,6 +43,7 @@ func StartGame() {
 
 	fmt.Println("1P, please, enter the number")
 	fmt.Scan(&user1Inp)
+
 	ClearTerminal()
 	fmt.Println("2P, please, enter the number")
 
