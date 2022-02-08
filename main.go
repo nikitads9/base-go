@@ -24,13 +24,12 @@ func Menu() {
 		fmt.Println("New game\nExit")
 		switch ReadInput() {
 		case "New game":
-			ClearTerminal()
 			fmt.Println("Let the game begin")
 			StartGame()
 		case "Exit":
 			return
 		case "":
-			continue
+			ClearTerminal()
 		default:
 			fmt.Println("Enter a proper command")
 			continue
