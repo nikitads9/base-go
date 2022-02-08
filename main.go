@@ -19,18 +19,16 @@ func ReadInput() string {
 }
 
 func Menu() {
-	fmt.Println("New game\nExit")
 
-outerLoop:
 	for {
+		fmt.Println("New game\nExit")
 		switch ReadInput() {
 		case "New game":
 			ClearTerminal()
 			fmt.Println("Let the game begin")
 			StartGame()
-			break outerLoop
 		case "Exit":
-			break outerLoop
+			return
 		case "":
 			continue
 		default:
@@ -49,20 +47,18 @@ func StartGame() {
 	ClearTerminal()
 	fmt.Println("2P, please, enter the number")
 
-guessLoop:
 	for fmt.Scan(&user2Inp); user1Inp != user2Inp; fmt.Scan(&user2Inp) {
 		if user2Inp > user1Inp {
 			fmt.Println("Greater")
-			continue guessLoop
+			continue
 		} else if user2Inp < user1Inp {
 			fmt.Println("Smaller")
-			continue guessLoop
+			continue
 		}
 	}
 
 	ClearTerminal()
 	fmt.Println("Bingo!")
-	Menu()
 }
 
 func ClearTerminal() {
