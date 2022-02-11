@@ -71,6 +71,6 @@ func ClearTerminal() {
 		cmd.Stdout = os.Stdout
 		cmd.Run()
 	default:
-		fmt.Print("Ambiguous OS")
+		fmt.Print("Ambiguous OS!")
 	}
 }
