@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strconv"
 )
 
 func main() {
@@ -19,9 +20,9 @@ func ReadInput() string {
 }
 
 func Menu() {
-
 	for {
 		fmt.Println("New game\nExit")
+
 		switch ReadInput() {
 		case "New game":
 			fmt.Println("Let the game begin")
@@ -31,38 +32,41 @@ func Menu() {
 		case "":
 			ClearTerminal()
 		default:
-			fmt.Println("Enter a proper command")
+			fmt.Println("invalid command")
 			continue
 		}
 	}
 }
 
 func StartGame() {
-	var user1Inp, user2Inp int
+	var (
+		numStr string
+		guess  int
+	)
 
 	fmt.Println("1P, please, enter the number")
-	fmt.Scan(&user1Inp)
+	fmt.Scan(&numStr)
+
+	num, err := strconv.Atoi(numStr)
+	if err != nil {
+		return
+	}
 
 	ClearTerminal()
 	fmt.Println("2P, please, enter the number")
 
-	for fmt.Scan(&user2Inp); user1Inp != user2Inp; fmt.Scan(&user2Inp) {
-		if user2Inp > user1Inp {
-			fmt.Println("Greater")
-			continue
-		} else if user2Inp < user1Inp {
-			fmt.Println("Smaller")
-			continue
+	for fmt.Scan(&guess); num != guess; fmt.Scan(&guess) {
+		if guess > num {
+			fmt.Println("Try less")
+		} else if guess < num {
+			fmt.Println("Try greater")
 		}
 	}
-
-	ClearTerminal()
-	fmt.Println("Bingo!")
 }
 
 func ClearTerminal() {
 	switch runtime.GOOS {
-	case "linux":
+	case "linux", "darwin/arm64":
 		cmd := exec.Command("clear")
 		cmd.Stdout = os.Stdout
 		cmd.Run()
